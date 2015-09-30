@@ -11,7 +11,6 @@ export default Ember.Component.extend({
         this.set('scoreNumber', review.get('score'));
         var tagsPlaceholder = "";
         review.get('review_tags').forEach(function(join) {
-          debugger;
           tagsPlaceholder += join.get('tag').get('name') + ", ";
         });
         this.set('tags', tagsPlaceholder);

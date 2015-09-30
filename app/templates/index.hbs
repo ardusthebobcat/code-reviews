@@ -1,3 +1,9 @@
-{{#each model as |review|}}
+{{#each model.reviews as |review|}}
   {{#link-to 'review' review}}{{review.name}}{{/link-to}}
 {{/each}}
+
+<div>
+  {{#each model.tags as |tag|}}
+    {{#link-to 'tag' tag}}{{tag.name}}{{/link-to}}
+  {{/each}}
+</div>

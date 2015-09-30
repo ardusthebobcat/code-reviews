@@ -1,1 +1,5 @@
-{{outlet}}
+{{model.name}}
+
+{{#each model.review_tags as |join|}}
+  {{#link-to 'review' join.review}}{{join.review.name}}{{/link-to}}
+{{/each}}
