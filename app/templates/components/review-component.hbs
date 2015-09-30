@@ -53,8 +53,10 @@
   {{review.eoa_rating}}
   {{review.doc_rating}}
   {{review.score}}
-  <button {{action 'showEdit' review}}>edit review</button>
 
+  {{#if session.isAuthenticated}}
+    <button {{action 'showEdit' review}}>edit review</button>
+  {{/if}}
   <div>
     Comments
     {{#each review.comments as |comment|}}

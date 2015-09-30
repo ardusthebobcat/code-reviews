@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-
   model(review) {
     return this.store.find('review', review.review_id);
   },
@@ -27,6 +26,6 @@ export default Ember.Route.extend({
         return review.save();
       });
       this.transitionTo('review');
-    }
+    },
   }
 });

@@ -5,20 +5,15 @@ export default Ember.Component.extend({
   addCommentForm: false,
   actions: {
     showEdit(review) {
-      if(prompt("What is the password")==="hi") {
-        this.set('editForm', true);
-        this.set('eoaNumber', review.get('eoa_rating'));
-        this.set('docNumber', review.get('doc_rating'));
-        this.set('scoreNumber', review.get('score'));
-        var tagsPlaceholder = "";
-        review.get('review_tags').forEach(function(join) {
-          tagsPlaceholder += join.get('tag').get('name') + ", ";
-        });
-        this.set('tags', tagsPlaceholder);
-      } else {
-        $(".content").prepend("<div class='alert'>That is not the right password.</div>");
-        $('.alert').delay(3000).fadeOut(1000, function() {$(this).remove();});
-      }
+      this.set('editForm', true);
+      this.set('eoaNumber', review.get('eoa_rating'));
+      this.set('docNumber', review.get('doc_rating'));
+      this.set('scoreNumber', review.get('score'));
+      var tagsPlaceholder = "";
+      review.get('review_tags').forEach(function(join) {
+        tagsPlaceholder += join.get('tag').get('name') + ", ";
+      });
+      this.set('tags', tagsPlaceholder);
     },
     editReview(review) {
       var params = {
@@ -37,6 +32,7 @@ export default Ember.Component.extend({
       this.sendAction('deleteReview', review);
     },
     showCommentForm() {
+      debugger;
       this.set('addCommentForm', true);
     },
     addComment(review) {
