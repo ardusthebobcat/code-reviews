@@ -1,0 +1,55 @@
+{{#if editForm}}
+  <form>
+    <div>
+      <label for="tool_name">Name of the Tool:</label>
+      {{input value=review.name id=tool_name}}
+    </div>
+    <div>
+      <label for="url">Tool Url:</label>
+      {{input value=review.url id=url}}
+    </div>
+    <div>
+      <label for="tool_review">Review:</label>
+      {{textarea value=review.tool_review id=tool_review}}
+    </div>
+    <div>
+      <label for="tags">Tags (separated by comma):</label>
+      {{input value=review.tags id=tags}}
+    </div>
+    <div>
+      <label for="eoa_rating">Ease of Access:</label>
+      {{radio-button value="1" checked=eoaNumber}} 1
+      {{radio-button value="2" checked=eoaNumber}} 2
+      {{radio-button value="3" checked=eoaNumber}} 3
+      {{radio-button value="4" checked=eoaNumber}} 4
+      {{radio-button value="5" checked=eoaNumber}} 5
+    </div>
+    <div>
+      <label for="doc_rating">Documentation Rating:</label>
+      {{radio-button value="1" checked=docNumber}} 1
+      {{radio-button value="2" checked=docNumber}} 2
+      {{radio-button value="3" checked=docNumber}} 3
+      {{radio-button value="4" checked=docNumber}} 4
+      {{radio-button value="5" checked=docNumber}} 5
+    </div>
+    <div>
+      <label for="score">Overall Rating:</label>
+      {{radio-button value="1" checked=scoreNumber}} 1
+      {{radio-button value="2" checked=scoreNumber}} 2
+      {{radio-button value="3" checked=scoreNumber}} 3
+      {{radio-button value="4" checked=scoreNumber}} 4
+      {{radio-button value="5" checked=scoreNumber}} 5
+    </div>
+    <button {{action 'editReview' review}}>Submit Changes</button>
+    <button {{action 'deleteReview' review}}>Delete Review</button>
+  </form>
+{{else}}
+  {{review.name}}
+  {{review.url}}
+  {{review.tool_review}}
+  {{review.tags}}
+  {{review.eoa_rating}}
+  {{review.doc_rating}}
+  {{review.score}}
+  <button {{action 'showEdit' review}}>edit review</button>
+{{/if}}

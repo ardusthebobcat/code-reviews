@@ -9,7 +9,7 @@ export default Ember.Component.extend({
       var params= {
         name: this.get('tool_name'),
         url: this.get('url'),
-        review: this.get('review'),
+        tool_review: this.get('tool_review'),
         tags: this.get('tags'),
         eoa_rating: this.get('eoaNumber'),
         doc_rating: this.get('docNumber'),
