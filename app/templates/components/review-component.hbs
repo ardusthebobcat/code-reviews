@@ -14,7 +14,7 @@
     </div>
     <div>
       <label for="tags">Tags (separated by comma):</label>
-      {{input value=review.tags id=tags}}
+      {{input value=tags id=tags}}
     </div>
     <div>
       <label for="eoa_rating">Ease of Access:</label>
@@ -47,7 +47,9 @@
   {{review.name}}
   {{review.url}}
   {{review.tool_review}}
-  {{review.tags}}
+  {{#each review.review_tags as |join|}}
+    {{join.tag.name}}
+  {{/each}}
   {{review.eoa_rating}}
   {{review.doc_rating}}
   {{review.score}}

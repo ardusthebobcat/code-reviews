@@ -9,6 +9,12 @@ export default Ember.Component.extend({
         this.set('eoaNumber', review.get('eoa_rating'));
         this.set('docNumber', review.get('doc_rating'));
         this.set('scoreNumber', review.get('score'));
+        var tagsPlaceholder = "";
+        review.get('review_tags').forEach(function(join) {
+          debugger;
+          tagsPlaceholder += join.get('tag').get('name') + ", ";
+        });
+        this.set('tags', tagsPlaceholder);
       } else {
         $(".content").prepend("<div class='alert'>That is not the right password.</div>");
         $('.alert').delay(3000).fadeOut(1000, function() {$(this).remove();});
