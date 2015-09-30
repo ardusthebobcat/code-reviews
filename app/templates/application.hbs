@@ -1,21 +1,23 @@
 <div class="ui borderless menu">
-  <div class="item">
-    <h1 class="ui header">
-      {{#link-to 'index'}}Code Reviews{{/link-to}}
-    </h1>
-  </div>
-  {{#if session.isAuthenticated}}
-  <div class="item">
-    {{#link-to 'add-review'}}Add a Review{{/link-to}}
-  </div>
-  {{/if}}
-  <div class="ui right item">
+  <div class="ui container">
+    <div class="item">
+      <h1 class="ui header">
+        {{#link-to 'index'}}Code Reviews{{/link-to}}
+      </h1>
+    </div>
     {{#if session.isAuthenticated}}
-      Logged in as {{session.currentUser.email}}
-      <button {{action "signOut"}}>Sign out</button>
-    {{else}}
-      {{#link-to 'login'}}Sign in{{/link-to}}
+    <div class="item">
+      {{#link-to 'add-review'}}Add a Review{{/link-to}}
+    </div>
     {{/if}}
+    <div class="ui right item">
+      {{#if session.isAuthenticated}}
+        Logged in as {{session.currentUser.email}}
+        <button {{action "signOut"}}>Sign out</button>
+      {{else}}
+        {{#link-to 'login'}}Sign in{{/link-to}}
+      {{/if}}
+    </div>
   </div>
 </div>
 

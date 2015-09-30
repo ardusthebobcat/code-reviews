@@ -1,43 +1,65 @@
-<form>
-  <div>
-    <label for="tool_name">Name of the Tool:</label>
-    {{input value=tool_name id=tool_name}}
+<form class="ui form">
+  <h4 class="ui dividing header">General Info</h4>
+  <div class="ui segment">
+    <div class="inline fields">
+      <div class="two wide field">
+        <label for="tool_name">Name of the Tool:</label>
+      </div>
+      <div class="fourteen wide field">
+        {{input value=tool_name id=tool_name}}
+      </div>
+    </div>
+    <div class='inline fields'>
+      <div class="two wide field">
+        <label for="url">Tool Url:</label>
+      </div>
+      <div class="fourteen wide field">
+        {{input value=url id=url}}
+      </div>
+    </div>
+    <div class='inline fields'>
+      <div class="two wide field">
+        <label for="tool_review">Review:</label>
+      </div>
+      <div class="fourteen wide field">
+        {{textarea value=tool_review id=tool_review}}
+      </div>
+    </div>
+    <div class='inline fields'>
+      <div class="two wide field">
+        <label for="tags">Tags (separated by comma):</label>
+      </div>
+      <div class="fourteen wide field">
+        {{input value=tags id=tags}}
+      </div>
+    </div>
   </div>
-  <div>
-    <label for="url">Tool Url:</label>
-    {{input value=url id=url}}
-  </div>
-  <div>
-    <label for="tool_review">Review:</label>
-    {{textarea value=tool_review id=tool_review}}
-  </div>
-  <div>
-    <label for="tags">Tags (separated by comma):</label>
-    {{input value=tags id=tags}}
-  </div>
-  <div>
-    <label for="eoa_rating">Ease of Access:</label>
-    {{radio-button value="1" checked=eoaNumber}} 1
-    {{radio-button value="2" checked=eoaNumber}} 2
-    {{radio-button value="3" checked=eoaNumber}} 3
-    {{radio-button value="4" checked=eoaNumber}} 4
-    {{radio-button value="5" checked=eoaNumber}} 5
-  </div>
-  <div>
-    <label for="doc_rating">Documentation Rating:</label>
-    {{radio-button value="1" checked=docNumber}} 1
-    {{radio-button value="2" checked=docNumber}} 2
-    {{radio-button value="3" checked=docNumber}} 3
-    {{radio-button value="4" checked=docNumber}} 4
-    {{radio-button value="5" checked=docNumber}} 5
-  </div>
-  <div>
-    <label for="score">Overall Rating:</label>
-    {{radio-button value="1" checked=scoreNumber}} 1
-    {{radio-button value="2" checked=scoreNumber}} 2
-    {{radio-button value="3" checked=scoreNumber}} 3
-    {{radio-button value="4" checked=scoreNumber}} 4
-    {{radio-button value="5" checked=scoreNumber}} 5
+  <h4 class="ui dividing header">Rating</h4>
+  <div class="ui segment">
+    <div class="field">
+      <label for="eoa_rating">Ease of Access:</label>
+      {{radio-button value="1" checked=eoaNumber}} 1
+      {{radio-button value="2" checked=eoaNumber}} 2
+      {{radio-button value="3" checked=eoaNumber}} 3
+      {{radio-button value="4" checked=eoaNumber}} 4
+      {{radio-button value="5" checked=eoaNumber}} 5
+    </div>
+    <div class="field">
+      <label for="doc_rating">Documentation Rating:</label>
+      {{radio-button value="1" checked=docNumber}} 1
+      {{radio-button value="2" checked=docNumber}} 2
+      {{radio-button value="3" checked=docNumber}} 3
+      {{radio-button value="4" checked=docNumber}} 4
+      {{radio-button value="5" checked=docNumber}} 5
+    </div>
+    <div class="field">
+      <label for="score">Overall Rating:</label>
+      {{radio-button value="1" checked=scoreNumber}} 1
+      {{radio-button value="2" checked=scoreNumber}} 2
+      {{radio-button value="3" checked=scoreNumber}} 3
+      {{radio-button value="4" checked=scoreNumber}} 4
+      {{radio-button value="5" checked=scoreNumber}} 5
+    </div>
   </div>
   <button {{action 'addReview'}}>Submit Review</button>
 </form>

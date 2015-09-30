@@ -1,13 +1,23 @@
 <div class="ui grid">
   <div class="twelve wide column">
-    {{#each model.reviews as |review|}}
-      {{#link-to 'review' review}}{{review.name}}{{/link-to}}
-    {{/each}}
+    <h3 class="ui header"><i class="circular inverted black code small icon"></i><div class="content">Tools <div class="sub header">Find what will fit in your toolbelt.</div></div></h3>
+    <div class="ui relaxed divided list">
+      {{#each model.reviews as |review|}}
+        <div class="item">
+          {{#link-to 'review' review}}{{review.name}}{{/link-to}}
+        </div>
+      {{/each}}
+    </div>
   </div>
 
   <div class="four wide column">
+    <h3 class="ui header">Tags</h3>
+    <div class="ui list">
     {{#each model.tags as |tag|}}
-      {{#link-to 'tag' tag}}{{tag.name}}{{/link-to}}
+      <div class="item">
+        {{#link-to 'tag' tag}}#{{tag.name}}{{/link-to}}
+      </div>
     {{/each}}
+    </div>
   </div>
 </div>
