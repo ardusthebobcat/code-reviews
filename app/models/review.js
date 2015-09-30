@@ -7,5 +7,6 @@ export default DS.Model.extend({
   review_tags: DS.hasMany('reviewtag', {async:true}),
   eoa_rating: DS.attr(),
   doc_rating: DS.attr(),
-  score: DS.attr()
+  score: DS.attr(),
+  comments: DS.hasMany('comments', {async: true})
 });

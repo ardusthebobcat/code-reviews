@@ -15,6 +15,7 @@ export default Ember.Component.extend({
         eoa_rating: this.get('eoaNumber'),
         doc_rating: this.get('docNumber'),
         score: this.get('scoreNumber'),
+        comments: []
       };
       var tagParams = [];
       tagsArray.forEach(function(tag) {

@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   editForm: false,
+  addCommentForm: false,
   actions: {
     showEdit(review) {
       if(prompt("What is the password")==="hi") {
@@ -34,6 +35,18 @@ export default Ember.Component.extend({
     },
     deleteReview(review) {
       this.sendAction('deleteReview', review);
+    },
+    showCommentForm() {
+      this.set('addCommentForm', true);
+    },
+    addComment(review) {
+      var params = {
+        author: this.get('author'),
+        comment: this.get('comment'),
+        review: this.get('review')
+      };
+      this.set('addCommentForm', false);
+      this.sendAction('addComment', params);
     }
   }
 });

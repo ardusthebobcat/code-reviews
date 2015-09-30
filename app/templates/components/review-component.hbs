@@ -54,4 +54,24 @@
   {{review.doc_rating}}
   {{review.score}}
   <button {{action 'showEdit' review}}>edit review</button>
+
+  <div>
+    Comments
+    {{#each review.comments as |comment|}}
+      <div>{{comment.comment}} - {{comment.author}}</div>
+    {{/each}}
+  </div>
+
+  {{#if addCommentForm}}
+    <form>
+      <label for="author">Who are you?</label>
+      {{input value=author id=author}}
+      <label for="comment">What is your comment?</label>
+      {{input value=comment id=comment}}
+
+      <button {{action 'addComment' review}}>add comment</button>
+    </form>
+  {{else}}
+    <button {{action 'showCommentForm' review}}>add comment </button>
+  {{/if}}
 {{/if}}
