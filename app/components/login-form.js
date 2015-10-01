@@ -23,7 +23,8 @@ export default Ember.Component.extend({
         email: this.get('email'),
         password: this.get('password')
       };
-      this.sendAction('login', params);
+      var context = this;
+      this.sendAction('login', params, context);
     }
   }
 });

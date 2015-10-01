@@ -1,3 +1,7 @@
+{{#if session.isAuthenticated}}
+<p>You are Signed In!</p>
+<p>{{#link-to 'index'}}Go Home{{/link-to}}</p>
+{{else}}
 <form>
   {{#if signUp}}
     <h3>Sign Up</h3>
@@ -28,3 +32,4 @@
   {{/if}}
 
 </form>
+{{/if}}

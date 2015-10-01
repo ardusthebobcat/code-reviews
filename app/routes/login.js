@@ -20,7 +20,7 @@ export default Ember.Route.extend({
       newUser.save();
       this.transitionTo('login');
     },
-    login(params) {
+    login(params, context) {
       var ref = new Firebase("https://codereviews.firebaseio.com");
       ref.authWithPassword({
         email    : params.email,
@@ -29,9 +29,7 @@ export default Ember.Route.extend({
         if (error) {
           console.log("Login Failed!", error);
         } else {
-          console.log("Authenticated successfully with payload:", authData);
           window.location.reload();
-          this.transitionTo('index');
         }
       });
     }
