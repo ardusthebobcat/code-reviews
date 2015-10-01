@@ -13,9 +13,12 @@ export default Ember.Route.extend({
           console.log("Error creating user:", error);
         } else {
           console.log("Successfully created user account with uid:", userData.uid);
-          var newParams = {username: params.username, email: params.email, uid: userData.uid, type: "authenticated"};
-          var newUser = context.store.createRecord('user', newParams);
-          newUser.save();
+          ref.child("users").child(userData.uid).set({
+            username: params.username,
+            email: params.email,
+            uid: userData.uid,
+            type: "authenticated"
+          });
         }
       });
       this.transitionTo('login');
