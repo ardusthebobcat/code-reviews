@@ -1,58 +1,38 @@
 {{#if editForm}}
-  <form>
-    <div>
-      <label for="tool_name">Name of the Tool:</label>
-      {{input value=review.name id=tool_name}}
-    </div>
-    <div>
-      <label for="url">Tool Url:</label>
-      {{input value=review.url id=url}}
-    </div>
-    <div>
-      <label for="tool_review">Review:</label>
-      {{textarea value=review.tool_review id=tool_review}}
-    </div>
-    <div>
-      <label for="tags">Tags (separated by comma):</label>
-      {{input value=tags id=tags}}
-    </div>
-    <div>
-      <label for="eoa_rating">Ease of Access:</label>
-      {{radio-button value="1" checked=eoaNumber}} 1
-      {{radio-button value="2" checked=eoaNumber}} 2
-      {{radio-button value="3" checked=eoaNumber}} 3
-      {{radio-button value="4" checked=eoaNumber}} 4
-      {{radio-button value="5" checked=eoaNumber}} 5
-    </div>
-    <div>
-      <label for="doc_rating">Documentation Rating:</label>
-      {{radio-button value="1" checked=docNumber}} 1
-      {{radio-button value="2" checked=docNumber}} 2
-      {{radio-button value="3" checked=docNumber}} 3
-      {{radio-button value="4" checked=docNumber}} 4
-      {{radio-button value="5" checked=docNumber}} 5
-    </div>
-    <div>
-      <label for="score">Overall Rating:</label>
-      {{radio-button value="1" checked=scoreNumber}} 1
-      {{radio-button value="2" checked=scoreNumber}} 2
-      {{radio-button value="3" checked=scoreNumber}} 3
-      {{radio-button value="4" checked=scoreNumber}} 4
-      {{radio-button value="5" checked=scoreNumber}} 5
-    </div>
+  <form class="ui form">
+    {{edit-review review=review eoaNumber=eoaNumber docNumber=docNumber scoreNumber=scoreNumber tags=tags}}
     <button {{action 'editReview' review}}>Submit Changes</button>
     <button {{action 'deleteReview' review}}>Delete Review</button>
   </form>
 {{else}}
-  {{review.name}}
-  {{review.url}}
-  {{review.tool_review}}
-  {{#each review.review_tags as |join|}}
-    {{join.tag.name}}
-  {{/each}}
-  {{review.eoa_rating}}
-  {{review.doc_rating}}
-  {{review.score}}
+<div class="ui info message">
+  <div class="header">{{review.name}}</div>
+  {{review.url}}<br>
+  <div class="list">
+    {{review.tool_review}}<br>
+    <div>
+      Tags:
+      {{#each review.review_tags as |join|}}
+        {{#link-to 'tag' join.tag}}#{{join.tag.name}}{{/link-to}}
+      {{/each}}
+    </div>
+    <div class="ui divider"></div>
+    <div class="ui grid">
+      <div class="row">
+        <div class="two wide column">Ease of Access</div>
+        <div class="eight wide column">{{{eoa-display review}}}</div>
+      </div>
+      <div class="row">
+        <div class="two wide column">Documentation</div>
+        <div class="eight wide column">{{{doc-rating review}}}</div>
+      </div>
+      <div class="row">
+        <div class="two wide column">Overall</div>
+        <div class="eight wide column">{{{score-rating review}}}</div>
+      </div>
+    </div>
+  </div>
+</div>
 
   {{#if session.isAuthenticated}}
     <button {{action 'showEdit' review}}>edit review</button>
@@ -65,12 +45,23 @@
   </div>
 
   {{#if addCommentForm}}
-    <form>
-      <label for="author">Who are you?</label>
-      {{input value=author id=author}}
-      <label for="comment">What is your comment?</label>
-      {{input value=comment id=comment}}
-
+    <form class="ui form">
+      <div class="inline fields">
+        <div class="two wide field">
+          <label for="author">Who are you?</label>
+        </div>
+        <div class="eight wide field">
+          {{input value=author id=author}}
+        </div>
+      </div>
+      <div class="inline fields">
+        <div class="two wide field">
+          <label for="comment">What is your comment?</label>
+        </div>
+        <div class="eight wide field">
+          {{textarea value=comment id=comment}}
+        </div>
+      </div>
       <button {{action 'addComment' review}}>add comment</button>
     </form>
   {{else}}

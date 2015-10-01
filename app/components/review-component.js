@@ -32,7 +32,6 @@ export default Ember.Component.extend({
       this.sendAction('deleteReview', review);
     },
     showCommentForm() {
-      debugger;
       this.set('addCommentForm', true);
     },
     addComment(review) {

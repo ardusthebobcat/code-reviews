@@ -4,6 +4,7 @@ export default Ember.Route.extend({
   actions: {
     addUser(params) {
       var ref = new Firebase("https://codereviews.firebaseio.com");
+      var context = this;
       ref.createUser({
         email    : params.email,
         password : params.password
@@ -12,12 +13,11 @@ export default Ember.Route.extend({
           console.log("Error creating user:", error);
         } else {
           console.log("Successfully created user account with uid:", userData.uid);
+          var newParams = {username: params.username, email: params.email, uid: userData.uid, type: "authenticated"};
+          var newUser = context.store.createRecord('user', newParams);
+          newUser.save();
         }
       });
-      var newParams = {username: params.username, email: params.email};
-      var newUser = this.store.createRecord('user', newParams);
-      debugger;
-      newUser.save();
       this.transitionTo('login');
     },
     login(params, context) {
