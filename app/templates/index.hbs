@@ -13,11 +13,7 @@
   <div class="four wide column">
     <h3 class="ui header">Tags</h3>
     <div class="ui list">
-    {{#each model.tags as |tag|}}
-      <div class="item">
-        {{#link-to 'tag' tag}}#{{tag.name}}{{/link-to}}
-      </div>
-    {{/each}}
+      {{tags-menu tags=model.tags}}
     </div>
   </div>
 </div>

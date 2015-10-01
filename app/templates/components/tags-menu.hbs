@@ -1,0 +1,5 @@
+{{#each sortedTags as |tag|}}
+  <div class="item">
+    {{#link-to 'tag' tag}}#{{tag.name}}{{/link-to}}
+  </div>
+{{/each}}
