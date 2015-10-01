@@ -1,5 +1,9 @@
-{{model.name}}
+<h3 class="ui header"><i class="circular inverted tag icon"></i><div class="content"><div class="sub header">Reviews for</div>{{model.name}}</div></h3>
 
-{{#each model.review_tags as |join|}}
-  {{#link-to 'review' join.review}}{{join.review.name}}{{/link-to}}
-{{/each}}
+<div class="ui divided list">
+  {{#each model.review_tags as |join|}}
+      <div class="item">
+        {{#link-to 'review' join.review}}{{join.review.name}}{{/link-to}}
+      </div>
+  {{/each}}
+</div>

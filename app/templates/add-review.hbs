@@ -1,5 +1,5 @@
 {{#if session.isAuthenticated}}
-  {{add-review-form addReview="addReview" session=session}}
+  {{add-review-form addReview="addReview" session=session model=model}}
 {{else}}
   {{login-form login="login" addUser="addUser"}}
 {{/if}}

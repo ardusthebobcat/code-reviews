@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   docNumber: "3",
   scoreNumber: "3",
   actions: {
-    addReview() {
+    addReview(model) {
       var tagsArray = this.get('tags').replace(/, /gi, ",").split(",");
       var reviewParams = {
         name: this.get('tool_name'),
@@ -21,7 +21,7 @@ export default Ember.Component.extend({
       tagsArray.forEach(function(tag) {
         tagParams.push({name: tag, review_tags: []})
       });
-      this.sendAction('addReview', reviewParams, tagParams);
+      this.sendAction('addReview', reviewParams, tagParams, model);
     }
   }
 });

@@ -1,12 +1,19 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  model() {
+    return this.store.findAll('tag');
+  },
   actions: {
-    addReview(reviewParams, tagParams) {
+    addReview(reviewParams, tagParams, model) {
       var newReview = this.store.createRecord('review', reviewParams);
       var context = this;
       tagParams.forEach(function(tagParam) {
-        var newTag = context.store.createRecord('tag', tagParam);
+        if(model.findBy('name', tagParam.name)) {
+          var newTag = model.findBy('name', tagParam.name);
+        } else {
+          var newTag = context.store.createRecord('tag', tagParam);
+        };
         newReview.save().then(function() {
           newTag.save().then(function() {
             var reviewTagParams = {tag: newTag, review: newReview};
@@ -50,7 +57,6 @@ export default Ember.Route.extend({
         if (error) {
           console.log("Login Failed!", error);
         } else {
-          console.log("Authenticated successfully with payload:", authData);
           window.location.reload();
           this.transitionTo('add-review');
         }
